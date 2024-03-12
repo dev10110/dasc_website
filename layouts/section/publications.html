@@ -1,0 +1,35 @@
+{{- define "main" }}
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/pcooksey/bibtex-js@1.0.0/src/bibtex_js.min.js"></script>
+
+<header class="page-header">
+    <h1>{{- (printf "%s&nbsp;" .Title ) | htmlUnescape -}}</h1>
+    {{- if .Description }}
+    <div class="post-description">
+        {{ .Description }}
+    </div>
+    {{- end }}
+    {{- if not (.Param "hideMeta") }}
+    <div class="post-meta">
+        {{- partial "translation_list.html" . -}}
+    </div>
+    {{- end }}
+</header>
+
+<div>
+<bibtex src="/publications.bib"></bibtex>
+
+<div class="bibtex_template">
+    <span class="year"></span>
+    <span>: </span>
+    <span class="title"></span>
+    <span class="author"></span>
+    </tr>
+</div>
+
+<div id="bibtex_display"></div>
+
+</div>
+
+
+{{- end }}{{/* end main */}}

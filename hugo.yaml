@@ -39,6 +39,7 @@ params:
   hideSummary: false
   showtoc: false
   tocopen: false
+  math: true
 
   assets:
     # disableHLJS: true # to disable highlight.js
@@ -140,3 +141,9 @@ markup:
     # guessSyntax: true
     # lineNos: true
     # style: monokai
+
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON # necessary for search

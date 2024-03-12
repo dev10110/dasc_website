@@ -1,5 +1,5 @@
 ---
 title: "William Bentz"
 category: "PhD"
-alumni: true
+isAlumni: true
 ---

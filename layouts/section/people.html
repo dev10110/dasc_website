@@ -15,35 +15,50 @@
     {{- end }}
 </header>
 
-
 <div>
 
 {{- $allpages := .Pages }}
 
-{{ $categories := slice "PhD" "MSE" "Alumni"}}
+{{ $categories := slice "Professor" "PostDoc" "PhD" "MSE" "Undergrad" "Alumni"}}
 
 {{ range $category := $categories}}
-<h2> {{ . }} </h2>
+  
+  
+  {{- $pages := $allpages }}
+  
+  {{ if eq $category "Alumni" }} 
+    {{- $pages = where $pages "Params.isAlumni" true }} 
+  {{ else }} 
+    {{- $pages = where $pages "Params.category" "==" . }} 
+    {{- $pages = where $pages "Params.isAlumni" false }} 
+  {{ end }} 
 
-{{- $pages := $allpages }}
+  {{- $pages = sort $pages "Params.year" }}
 
-{{- $pages = where $pages "Params.category" "==" . }} 
+  {{ if gt ( $pages | len ) 0 }}
+  <h2> {{ . }} </h2>
 
-{{- range $pages }}
+  <div class="cards">
 
-<article class="post-entry">
-  {{- partial "cover.html" (dict "cxt" . "IsSingle" false "isHidden" false) }}
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">{{- .Title }} </h2>
-  </header>
-  {{- if (ne (.Param "hideSummary") true) }}
-  <div class="entry-content">
-    <p>{{ .Summary | plainify | htmlUnescape }}{{ if .Truncated }}...{{ end }}</p>
-  </div>
+  {{- range $page := $pages }}
+  
+    <article class="post-entry">
+      {{- partial "cover.html" (dict "cxt" . "IsSingle" false "isHidden" false "Width" 20) }}
+      <header class="entry-header">
+        <h2 class="entry-hint-parent">{{- .Title }} </h2>
+      </header>
+      <div class="entry-content">
+        {{ if eq $category "Alumni" }}
+        <p> {{ .Params.category }} </p>
+        {{ end }}
+        <p>{{ .Summary | plainify | htmlUnescape }}{{ if .Truncated }}...{{ end }}</p>
+      </div>
+      <a class="entry-link" aria-label="post link to {{ .Title | plainify }}" href="{{ .Permalink }}"></a>
+    </article>
   {{- end }}
-  <a class="entry-link" aria-label="post link to {{ .Title | plainify }}" href="{{ .Permalink }}"></a>
-</article>
-{{- end }}
+  
+  </div>
+  {{ end }}
 {{ end }} 
 
 </div>
