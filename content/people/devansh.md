@@ -4,7 +4,7 @@ category: "PhD"
 isAlumni: false
 year: 2020
 cover:
-    image: "/images/devansh.jpg"
+    image: "../images/devansh.jpg"
 showtoc: false
 hidemeta: true
 ShowPostNavLinks: false
