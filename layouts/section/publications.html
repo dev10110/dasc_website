@@ -29,7 +29,7 @@
                 <li> <a href=" {{ .RelPermalink }}"> Details </a> </li>
                   {{ if (isset .Params "pdf") }} 
                     <li><a href="{{ .Params.pdf }}" target="_blank"> PDF </a> </li>
-                  {{ end }}
+                    {{ end }}
                   {{ if (isset .Params "video") }} 
                     <li><a href="{{ .Params.video }}" target="_blank"> Video </a> </li>
                   {{ end }}
