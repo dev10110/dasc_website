@@ -10,4 +10,10 @@ hugo.darwin
 hugo.linux
 
 # Temporary lock file while building
+*/.hugo_build.lock
 /.hugo_build.lock
+
+# python
+venv/
+__pycache__/
+

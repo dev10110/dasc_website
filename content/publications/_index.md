@@ -1,6 +1,6 @@
 ---
 title: "Publications"
-placeholder: "Publications"
+placeholder: "publications"
 layout: "publications"
 ShowReadingTime: false
 ShowWordCount: false

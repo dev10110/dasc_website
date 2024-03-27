@@ -1,7 +1,8 @@
 baseURL: https://example.org/
 languageCode: en-us
 title: DASC Lab
-theme: "PaperMod"
+theme: 
+  - "PaperMod"
 
 enableRobotsTXT: true
 buildDrafts: false
